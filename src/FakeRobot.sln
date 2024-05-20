@@ -9,9 +9,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeRobot.Application", "FakeRobot.Application\FakeRobot.Application.csproj", "{FA835986-522F-4751-9233-30FC6E93D594}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{10733EEA-5A5B-4E5C-83E8-18CA040C307D}"
-    ProjectSection(SolutionItems) = preProject
+				ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-	EndProjectSection
+					..\Dockerfile = ..\Dockerfile
+					..\docker-compose.yml = ..\docker-compose.yml
+				EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\FakeRobot.Domain\FakeRobot.Domain.csproj" />
+      <ProjectReference Include="..\FakeRobot.Infrastructure\FakeRobot.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
