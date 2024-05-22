@@ -1,4 +1,4 @@
-using FakeRobot.Models;
+using FakeRobot.Contracts;
 
 namespace FakeRobot.Application.Interface;
 

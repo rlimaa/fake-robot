@@ -1,4 +1,6 @@
-namespace FakeRobot.Models;
+using FakeRobot.Models;
+
+namespace FakeRobot.Contracts;
 
 public class RobotCommandSet
 {

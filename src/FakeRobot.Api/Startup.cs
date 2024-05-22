@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
 using FakeRobot.Application;
 using FakeRobot.Application.Interface;
+using FakeRobot.Infrastructure;
 
 namespace FakeRobot.Api;
 
@@ -15,8 +16,8 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddTransient<IRobotCommandService, RobotCommandService>();
-        
+        services.RegisterApplication();
+        services.RegisterInfrastructure(Configuration);
         services.AddControllers().AddJsonOptions(options =>
         {
             var converter = new JsonStringEnumConverter();
@@ -29,6 +30,7 @@ public class Startup
 
         app.UseRouting();
         app.UseForwardedHeaders();
+        app.Migrate();
 
         app.UseEndpoints(endpoints =>
         {

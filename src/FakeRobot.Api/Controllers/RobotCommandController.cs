@@ -1,4 +1,5 @@
 using FakeRobot.Application.Interface;
+using FakeRobot.Contracts;
 using FakeRobot.Models;
 using Microsoft.AspNetCore.Mvc;
 
