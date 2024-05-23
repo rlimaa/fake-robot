@@ -1,8 +1,8 @@
-using FakeRobot.Infrastructure.Entities;
+using FakeRobot.Contracts;
 
 namespace FakeRobot.Infrastructure.Repositories.Interface;
 
 public interface IRobotCommandRepository
 {
-    RobotCommandRecord SaveRobotCommandResult(int commands, int result, double duration);
+    CommandsSummary SaveRobotCommandResult(int commands, int result, double duration);
 }

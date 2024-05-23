@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using FakeRobot.DataObject;
 using FakeRobot.Enums;
 using FakeRobot.Models;
 
@@ -6,54 +8,76 @@ namespace FakeRobot;
 public class CleaningRobot(Coordinate start)
 {
     private Coordinate CurrentPosition { get; set; } = start;
+    private IList<Coordinate> _visitedPlaces = new List<Coordinate>();
 
-    public int ProcessCommands(IEnumerable<RobotCommand> commands)
+    public CommandsResult ProcessCommands(IEnumerable<RobotCommand> commands)
     {
-        return commands.Sum(ProcessCommand);
+        var stopwatch = new Stopwatch();
+        stopwatch.Start();
+        
+        _visitedPlaces.Add(new Coordinate(CurrentPosition.X, CurrentPosition.Y));
+        foreach (var command in commands)
+        {
+            ProcessCommand(command);
+        }
+
+        var nCleanedPlaces = _visitedPlaces.Distinct().Count();
+        stopwatch.Stop();
+        return new CommandsResult(nCleanedPlaces, stopwatch.ElapsedMilliseconds);
     }
 
-    private int ProcessCommand(RobotCommand command)
+    private void ProcessCommand(RobotCommand command)
     {
         switch (command.Direction)
         {
             case Direction.East:
-                return MoveEast(command.Steps);
+                MoveEast(command.Steps);
+                return;
             case Direction.West:
-                return MoveWest(command.Steps);
+                MoveWest(command.Steps);
+                return;
             case Direction.North:
-                return MoveNorth(command.Steps);
+                MoveNorth(command.Steps);
+                return;
             case Direction.South:
-                return MoveSouth(command.Steps);
-            default:
-                return 0;
+                MoveSouth(command.Steps);
+                return;
         }
     }
 
-    private int MoveEast(int steps)
+    private void MoveEast(int steps)
     {
-        CurrentPosition.X += steps;
-        //TODO COUNT NUMBER OF UNIQUE PLACES CLEANED
-        return 1;
+        for (var i = 1; i <= steps; i++)
+        {
+            CurrentPosition.X = i;
+            _visitedPlaces.Add(new Coordinate(CurrentPosition.X, CurrentPosition.Y));
+        }
     }
     
-    private int MoveWest(int steps)
+    private void MoveWest(int steps)
     {
-        CurrentPosition.X -= steps;
-        //TODO COUNT NUMBER OF UNIQUE PLACES CLEANED
-        return 1;
+        for (var i = 1; i <= steps; i++)
+        {
+            CurrentPosition.X -= i;
+            _visitedPlaces.Add(new Coordinate(CurrentPosition.X, CurrentPosition.Y));
+        }
     } 
     
-    private int MoveNorth(int steps)
+    private void MoveNorth(int steps)
     {
-        CurrentPosition.Y += steps;
-        //TODO COUNT NUMBER OF UNIQUE PLACES CLEANED
-        return 1;
+        for (var i = 1; i <= steps; i++)
+        {
+            CurrentPosition.Y += i;
+            _visitedPlaces.Add(new Coordinate(CurrentPosition.X, CurrentPosition.Y));
+        }
     }
     
-    private int MoveSouth(int steps)
+    private void MoveSouth(int steps)
     {
-        CurrentPosition.Y -= steps;
-        //TODO COUNT NUMBER OF UNIQUE PLACES CLEANED
-        return 1;
+        for (var i = 1; i <= steps; i++)
+        {
+            CurrentPosition.Y -= i;
+            _visitedPlaces.Add(new Coordinate(CurrentPosition.X, CurrentPosition.Y));
+        }
     }
 }

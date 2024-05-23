@@ -1,3 +1,4 @@
+using FakeRobot.Contracts;
 using FakeRobot.Infrastructure.Entities;
 using FakeRobot.Infrastructure.Repositories.Interface;
 
@@ -12,11 +13,10 @@ public class RobotCommandRepository : IRobotCommandRepository
         _ctx = ctx;
     }
 
-    public RobotCommandRecord SaveRobotCommandResult(int commands, int result, double duration)
+    public CommandsSummary SaveRobotCommandResult(int commands, int result, double duration)
     {
         try
         {
-
             var robotCommandRecord = new RobotCommandRecord
             {
                 Commands = commands,
@@ -26,7 +26,13 @@ public class RobotCommandRepository : IRobotCommandRepository
 
             _ctx.RobotCommandRecords.Add(robotCommandRecord);
             _ctx.SaveChanges();
-            return robotCommandRecord;
+            
+            return new CommandsSummary(
+                Id: robotCommandRecord.Id, 
+                Timestamp: robotCommandRecord.Timestamp, 
+                Commands: robotCommandRecord.Commands, 
+                Result: robotCommandRecord.Result,
+                Duration: robotCommandRecord.Duration);
         }
         catch (Exception e)
         {

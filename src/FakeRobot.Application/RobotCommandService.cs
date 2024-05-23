@@ -1,7 +1,5 @@
-﻿using System.Text.Json;
-using FakeRobot.Application.Interface;
+﻿using FakeRobot.Application.Interface;
 using FakeRobot.Contracts;
-using FakeRobot.Infrastructure.Repositories;
 using FakeRobot.Infrastructure.Repositories.Interface;
 
 namespace FakeRobot.Application;
@@ -15,11 +13,10 @@ public class RobotCommandService : IRobotCommandService
         _robotCommandRepository = robotCommandRepository;
     }
 
-    public async Task<bool> ProcessCommand(RobotCommandSet robotCommandSet)
+    public CommandsSummary ProcessCommand(RobotCommandSet robotCommandSet)
     {
-        Console.WriteLine(JsonSerializer.Serialize(robotCommandSet));
-        await Task.Delay(100);
-        _robotCommandRepository.SaveRobotCommandResult(1, 1, 1);
-        return true;
+        var robot = new CleaningRobot(robotCommandSet.Start);
+        var res = robot.ProcessCommands(robotCommandSet.Commands);
+        return _robotCommandRepository.SaveRobotCommandResult(robotCommandSet.Commands.Count(), res.NumberCleanedPlaces, res.ElapsedMilliSeconds);
     }
 }

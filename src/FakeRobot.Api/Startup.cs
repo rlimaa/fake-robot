@@ -27,7 +27,6 @@ public class Startup
     
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-
         app.UseRouting();
         app.UseForwardedHeaders();
         app.Migrate();
