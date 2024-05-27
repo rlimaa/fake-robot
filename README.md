@@ -5,6 +5,9 @@ Fake Cleaning Robot Api
 1. .NET Core SDK  8
 2. Nuget
 3. EntityFrameworkCore 8.0.5
+4. Postgres
+5. Docker
+   
 
 ### Setup
 To start running the service it's necessary to update the `.env` file on the root folder with applicable environment variables, specially the `CONNECTION_STRING` env variable with a valid Postgres connection string. An example of .env file can be seen below.
