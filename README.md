@@ -7,7 +7,7 @@ Fake Cleaning Robot Api
 3. EntityFrameworkCore 8.0.5
 
 ### Setup
-To start running the service it's necessary to update the `.env` file on the root folder with applicable environment variable, specially the `CONNECTION_STRING` env variable with a valid Postgres connection string. An example of .env file can be seen below.
+To start running the service it's necessary to update the `.env` file on the root folder with applicable environment variables, specially the `CONNECTION_STRING` env variable with a valid Postgres connection string. An example of .env file can be seen below.
 
 ```dotenv
 CONNECTION_STRING="Username=USER;Password=PASSWORD;Server=HOST:PORT;Database=FakeRobot"
@@ -28,7 +28,7 @@ The `FakeRobot.Api` project is the solution startup project and contains the dep
 
 ### Application
 
-The `FakeRobot.Application` project contains the orchestration of the API, it call the right domain objects and stores the results using the Infrastructure.
+The `FakeRobot.Application` project contains the orchestration of the API, it calls the right domain objects and stores the results using the Infrastructure.
 
 ### Domain
 The `FakeRobot.Domain` project contains the core domain of the system. The `CleaningRobot` class is declared there, where all the domain logic is encapsulated.
@@ -44,6 +44,6 @@ There is a folder called `FakeRobot.Postman` on the `src` folder which contains 
 2. Port `5001` was used because port `5000` was already in used in my local environment 
 3. The `timestamp` field on the `Executions` table is stored with UTC
 4. The `duration` field on the `Executions` table is stored in nano seconds
-5. When the robot is moving North Y coordinate is incremented, when moving South Y is decremented
-6. When the robot is moving East X coordinate is incremented, when moving West X is decremented
+5. When the robot is moving North, Y coordinate is incremented, when moving South, Y is decremented
+6. When the robot is moving East, X coordinate is incremented, when moving West, X is decremented
 7. Given the small complexity of the system, only the core features are tested programatically, that is the `Domain` with the project `FakeRobot.Domain.Tests` and the interaction with outside world with the Postman tests on the `FakeRobot.Postman` folder. 
