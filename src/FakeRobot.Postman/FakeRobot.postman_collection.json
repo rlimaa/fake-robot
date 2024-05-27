@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "82cbf124-07b6-4b5b-8803-614b45e21f4c",
+		"name": "FakeRobot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4692517"
+	},
+	"item": [
+		{
+			"name": "SuccessfullCommand",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test commands\", () => {",
+							"    let jsonData = pm.response.json();",
+							"    pm.expect(jsonData.commands).to.eql(3);",
+							"    pm.expect(jsonData.result).to.eql(4);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Start\": {\n        \"X\": 10,\n        \"Y\": 22\n    },\n    \"Commands\": [\n        {\n            \"Direction\": \"east\",\n            \"Steps\": 2\n        },\n        {\n            \"Direction\": \"north\",\n            \"Steps\": 1\n        },\n        {\n            \"Direction\": \"south\",\n            \"Steps\": 1\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{FakeRobotApiUrl}}/pyyne-cleaning-robot/enter-path",
+					"host": [
+						"{{FakeRobotApiUrl}}"
+					],
+					"path": [
+						"pyyne-cleaning-robot",
+						"enter-path"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ValidationError",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validation Error\", () => {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Start\": {\n        \"Y\": 22\n    },\n    \"Commands\": [\n        {\n            \"Direction\": \"east\",\n            \"Steps\": 200000\n        },\n        {\n            \"Direction\": \"north\",\n            \"Steps\": 1\n        },\n        {\n            \"Direction\": \"south\",\n            \"Steps\": 1\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{FakeRobotApiUrl}}/pyyne-cleaning-robot/enter-path",
+					"host": [
+						"{{FakeRobotApiUrl}}"
+					],
+					"path": [
+						"pyyne-cleaning-robot",
+						"enter-path"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
