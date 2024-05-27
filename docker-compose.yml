@@ -1,15 +1,16 @@
 version: '3.8'
 
+
 services:
   api:
-    container_name: fake-robot-api
     env_file:
-      - ./env_file
+      - ./.env
+    container_name: fake-robot-api
     build:
       context: .
+      args:
+        - PORT=5001
       dockerfile: Dockerfile
     ports:
-      - "5001:5001"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - "${ASPNETCORE_HTTP_PORTS}:${ASPNETCORE_HTTP_PORTS}"
     restart: on-failure
