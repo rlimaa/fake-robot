@@ -3,6 +3,7 @@ using System;
 using FakeRobot.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FakeRobot.Infrastructure.Migrations
 {
     [DbContext(typeof(FakeRobotContext))]
-    partial class FakeRobotContextModelSnapshot : ModelSnapshot
+    [Migration("20240523201313_ChangeDurationType")]
+    partial class ChangeDurationType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +25,7 @@ namespace FakeRobot.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("FakeRobot.Infrastructure.Entities.Executions", b =>
+            modelBuilder.Entity("FakeRobot.Infrastructure.Entities.RobotCommandRecord", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -45,7 +48,7 @@ namespace FakeRobot.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Executions");
+                    b.ToTable("RobotCommandRecords");
                 });
 #pragma warning restore 612, 618
         }

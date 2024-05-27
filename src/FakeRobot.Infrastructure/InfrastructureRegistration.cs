@@ -14,7 +14,8 @@ public static class InfrastructureRegistration
     {
         services.AddTransient<IRobotCommandRepository, RobotCommandRepository>();
         services.AddEntityFrameworkNpgsql()
-            .AddDbContext<FakeRobotContext>(options => options.UseNpgsql(configuration.GetConnectionString("DbContext")));
+            .AddDbContext<FakeRobotContext>(options => options.UseNpgsql(configuration.GetConnectionString("Db")));
+            // .AddDbContext<FakeRobotContext>(options => options.UseNpgsql(Environment.GetEnvironmentVariable("CONNECTION_STRING")));
         
         return services;
     }

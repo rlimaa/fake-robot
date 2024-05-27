@@ -3,6 +3,8 @@ version: '3.8'
 services:
   api:
     container_name: fake-robot-api
+    env_file:
+      - ./env_file
     build:
       context: .
       dockerfile: Dockerfile

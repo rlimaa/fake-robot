@@ -1,7 +1,7 @@
 namespace FakeRobot.DataObject;
 
-public record CommandsResult(int NumberCleanedPlaces, double ElapsedMilliSeconds)
+public record CommandsResult(int NumberCleanedPlaces, long ElapsedMilliSeconds)
 {
     public int NumberCleanedPlaces { get; set; } = NumberCleanedPlaces;
-    public double ElapsedMilliSeconds { get; set; } = ElapsedMilliSeconds;
+    public long ElapsedMilliSeconds { get; set; } = ElapsedMilliSeconds;
 }

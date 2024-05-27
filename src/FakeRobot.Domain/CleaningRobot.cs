@@ -22,8 +22,11 @@ public class CleaningRobot(Coordinate start)
         }
 
         var nCleanedPlaces = _visitedPlaces.Distinct().Count();
+        Task.Delay(100);
         stopwatch.Stop();
-        return new CommandsResult(nCleanedPlaces, stopwatch.ElapsedMilliseconds);
+        var ts = stopwatch.Elapsed; 
+        var res = new CommandsResult(nCleanedPlaces, ts.Nanoseconds);
+        return res;
     }
 
     private void ProcessCommand(RobotCommand command)
@@ -49,7 +52,7 @@ public class CleaningRobot(Coordinate start)
     {
         for (var i = 1; i <= steps; i++)
         {
-            CurrentPosition.X = i;
+            CurrentPosition.X++;
             _visitedPlaces.Add(new Coordinate(CurrentPosition.X, CurrentPosition.Y));
         }
     }
@@ -58,7 +61,7 @@ public class CleaningRobot(Coordinate start)
     {
         for (var i = 1; i <= steps; i++)
         {
-            CurrentPosition.X -= i;
+            CurrentPosition.X--;
             _visitedPlaces.Add(new Coordinate(CurrentPosition.X, CurrentPosition.Y));
         }
     } 
@@ -67,7 +70,7 @@ public class CleaningRobot(Coordinate start)
     {
         for (var i = 1; i <= steps; i++)
         {
-            CurrentPosition.Y += i;
+            CurrentPosition.Y++;
             _visitedPlaces.Add(new Coordinate(CurrentPosition.X, CurrentPosition.Y));
         }
     }
@@ -76,7 +79,7 @@ public class CleaningRobot(Coordinate start)
     {
         for (var i = 1; i <= steps; i++)
         {
-            CurrentPosition.Y -= i;
+            CurrentPosition.Y--;
             _visitedPlaces.Add(new Coordinate(CurrentPosition.X, CurrentPosition.Y));
         }
     }

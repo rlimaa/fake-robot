@@ -1,0 +1,1 @@
+CONNECTION_STRING="Username=postgres;Password=1234;Server=192.168.15.140:5432;Database=FakeRobot"

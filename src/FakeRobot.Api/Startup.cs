@@ -23,6 +23,7 @@ public class Startup
             var converter = new JsonStringEnumConverter();
             options.JsonSerializerOptions.Converters.Add(converter);
         });
+        services.AddSwaggerGen();
     }
     
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -30,6 +31,13 @@ public class Startup
         app.UseRouting();
         app.UseForwardedHeaders();
         app.Migrate();
+
+        app.UseSwagger();
+        app.UseSwaggerUI(c =>
+        {
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "Fake Robot");
+            c.RoutePrefix = string.Empty;  
+        });
 
         app.UseEndpoints(endpoints =>
         {

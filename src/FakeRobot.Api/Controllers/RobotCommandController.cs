@@ -1,3 +1,4 @@
+using FakeRobot.Api.Helpers;
 using FakeRobot.Application.Interface;
 using FakeRobot.Contracts;
 using FakeRobot.Models;
@@ -21,12 +22,19 @@ public class RobotCommandController : ControllerBase
     {
         try
         {
+            var validation = ValidationHelper.ValidateCommandSet(robotCommandSet);
+            if (!validation.IsValid)
+            {
+                return BadRequest(string.Join(';', validation.Messages));
+            }
+            
             var res = _robotCommandService.ProcessCommand(robotCommandSet);
             return Ok(res);
+
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            return BadRequest();
+            return BadRequest(e);
         }
     } 
 }

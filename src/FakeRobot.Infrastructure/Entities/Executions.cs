@@ -4,7 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FakeRobot.Infrastructure.Entities;
 [PrimaryKey(nameof(Id))]
-public class RobotCommandRecord
+[Table("Executions")]
+public class Executions
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key, Column(Order = 0)]
@@ -13,5 +14,5 @@ public class RobotCommandRecord
     public DateTime Timestamp { get; set; } = DateTime.UtcNow;
     public int Commands { get; set; }
     public int Result { get; set; }
-    public double Duration { get; set; }
+    public long Duration { get; set; }
 }

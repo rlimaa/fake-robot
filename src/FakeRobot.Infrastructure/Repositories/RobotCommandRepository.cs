@@ -13,11 +13,11 @@ public class RobotCommandRepository : IRobotCommandRepository
         _ctx = ctx;
     }
 
-    public CommandsSummary SaveRobotCommandResult(int commands, int result, double duration)
+    public CommandsSummary SaveRobotCommandResult(int commands, int result, long duration)
     {
         try
         {
-            var robotCommandRecord = new RobotCommandRecord
+            var robotCommandRecord = new Executions
             {
                 Commands = commands,
                 Result = result,
