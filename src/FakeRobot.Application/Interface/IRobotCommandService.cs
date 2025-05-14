@@ -4,5 +4,5 @@ namespace FakeRobot.Application.Interface;
 
 public interface IRobotCommandService
 {
-    CommandsSummary ProcessCommand(RobotCommandSet robotCommandSet);
+    Task<CommandsSummary> ProcessCommand(RobotCommandSet robotCommandSet);
 }

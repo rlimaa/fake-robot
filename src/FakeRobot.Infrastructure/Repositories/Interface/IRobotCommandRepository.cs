@@ -4,5 +4,5 @@ namespace FakeRobot.Infrastructure.Repositories.Interface;
 
 public interface IRobotCommandRepository
 {
-    CommandsSummary SaveRobotCommandResult(int commands, int result, long duration);
+    Task<CommandsSummary> SaveRobotCommandResult(int commands, int result, long duration);
 }

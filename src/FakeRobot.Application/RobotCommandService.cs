@@ -13,10 +13,10 @@ public class RobotCommandService : IRobotCommandService
         _robotCommandRepository = robotCommandRepository;
     }
 
-    public CommandsSummary ProcessCommand(RobotCommandSet robotCommandSet)
+    public async Task<CommandsSummary> ProcessCommand(RobotCommandSet robotCommandSet)
     {
         var robot = new CleaningRobot(robotCommandSet.Start);
         var res = robot.ProcessCommands(robotCommandSet.Commands);
-        return _robotCommandRepository.SaveRobotCommandResult(robotCommandSet.Commands.Count(), res.NumberCleanedPlaces, res.ElapsedMilliSeconds);
+        return await _robotCommandRepository.SaveRobotCommandResult(robotCommandSet.Commands.Count(), res.NumberCleanedPlaces, res.ElapsedMilliSeconds);
     }
 }

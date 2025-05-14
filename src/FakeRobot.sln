@@ -23,6 +23,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A0C5057B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeRobot.Domain.Tests", "FakeRobot.Domain.Tests\FakeRobot.Domain.Tests.csproj", "{644B0C2D-3B63-4052-A8F2-404C2B60AA7A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeRobot.Host", "FakeRobot.Host\FakeRobot.Host.csproj", "{7059F4A8-6FBC-4AAD-8996-C5F29FCEF655}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeRobot.Subscriber", "FakeRobot.Subscriber\FakeRobot.Subscriber.csproj", "{C1432B10-5BC9-49A9-A000-84F879FA4D4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,14 @@ Global
 		{644B0C2D-3B63-4052-A8F2-404C2B60AA7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{644B0C2D-3B63-4052-A8F2-404C2B60AA7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{644B0C2D-3B63-4052-A8F2-404C2B60AA7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7059F4A8-6FBC-4AAD-8996-C5F29FCEF655}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7059F4A8-6FBC-4AAD-8996-C5F29FCEF655}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7059F4A8-6FBC-4AAD-8996-C5F29FCEF655}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7059F4A8-6FBC-4AAD-8996-C5F29FCEF655}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1432B10-5BC9-49A9-A000-84F879FA4D4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1432B10-5BC9-49A9-A000-84F879FA4D4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1432B10-5BC9-49A9-A000-84F879FA4D4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1432B10-5BC9-49A9-A000-84F879FA4D4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{644B0C2D-3B63-4052-A8F2-404C2B60AA7A} = {A0C5057B-DB72-43EF-9E8F-EC38B78A66FC}

@@ -17,8 +17,8 @@ public class RobotCommandController : ControllerBase
     }
     
     [HttpPost]
-    [Route("pyyne-cleaning-robot/enter-path")]
-    public IActionResult PostCommand(RobotCommandSet robotCommandSet)
+    [Route("cleaning-robot/enter-path")]
+    public async Task<IActionResult> PostCommand(RobotCommandSet robotCommandSet)
     {
         try
         {
@@ -28,7 +28,7 @@ public class RobotCommandController : ControllerBase
                 return BadRequest(string.Join(';', validation.Messages));
             }
             
-            var res = _robotCommandService.ProcessCommand(robotCommandSet);
+            var res = await _robotCommandService.ProcessCommand(robotCommandSet);
             return Ok(res);
 
         }
